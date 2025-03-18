@@ -1,0 +1,99 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Container Styles */
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 60%; /* Increased width for better content presentation */
+    text-align: center;
+    max-width: 800px; /* Max width to ensure responsiveness */
+}
+
+/* Header Styles */
+h1 {
+    font-size: 2.2rem; /* Increased font size for clarity */
+    color: #333;
+    margin-bottom: 10px; /* Space below the title */
+}
+
+h3 {
+    color: #555;
+    font-size: 1.5rem;
+    margin-bottom: 20px; /* Space below the author name */
+}
+
+/* Content Box Styling */
+.content-box {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 1rem;
+    color: #444;
+    max-height: 300px; /* Prevents content overflow */
+    overflow-y: auto; /* Adds scroll if content is too long */
+}
+
+/* Form Styling */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Select Dropdown */
+select {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 10px 0; /* Adds space between elements */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Submit Button */
+button {
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #444;
+}

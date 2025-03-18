@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Book Review System</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">Book Review System</div>
+        <ul class="nav-links">
+            <li><a href="/mybooks">My Books</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by book name or author...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <!-- Sort Dropdown -->
+    <div class="sort-container">
+        <label for="sortSelect">Sort by Rating:</label>
+        <select id="sortSelect">
+            <option value="default">Default</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+
+    <!-- Books Table -->
+    <div class="book-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Average Rating</th>
+                </tr>
+            </thead>
+            <tbody id="bookTableBody">
+                <% books.forEach(book => { %>
+                    <tr>
+                        <td>
+                            <a href="/book-details/<%= encodeURIComponent(book.title) %>">
+                                <%= book.title %>
+                            </a>
+                        </td>
+                        <td><%= book.author %></td>
+                        <td data-rating="<%= book.avgRating || 0 %>">
+                            <%= book.avgRating ? book.avgRating.toFixed(2) : "No ratings yet" %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>          
+        </table>        
+    </div>
+
+    <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            let input = document.getElementById("searchInput").value.trim().toLowerCase();
+            let rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                let bookName = row.cells[0].innerText.toLowerCase();
+                let author = row.cells[1].innerText.toLowerCase();
+                row.style.display = (bookName.includes(input) || author.includes(input)) ? "" : "none";
+            });
+        });
+
+        document.getElementById("sortSelect").addEventListener("change", function() {
+            let sortOrder = this.value;
+            let tbody = document.getElementById("bookTableBody");
+            let rows = Array.from(tbody.rows);
+
+            if (sortOrder !== "default") {
+                rows.sort((a, b) => {
+                    let ratingA = parseFloat(a.cells[2].getAttribute("data-rating")) || 0;
+                    let ratingB = parseFloat(b.cells[2].getAttribute("data-rating")) || 0;
+                    return sortOrder === "asc" ? ratingA - ratingB : ratingB - ratingA;
+                });
+
+                tbody.innerHTML = "";
+                rows.forEach(row => tbody.appendChild(row));
+            }
+        });
+    </script>
+
+</body>
+</html>

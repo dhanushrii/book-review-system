@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish a Book</title>
+    <link rel="stylesheet" href="/css/publish.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Publish a New Book</h1>
+
+        <!-- Success message for successful submission -->
+        <% if (successMessage) { %>
+            <div class="success-message">
+                <p><%= successMessage %></p>
+            </div>
+        <% } %>
+
+        <!-- Form to publish a new book -->
+        <form action="/mybooks/add" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="contents">Book Contents:</label>
+            <textarea id="contents" name="contents" rows="5" required></textarea>
+
+            <button type="submit" class="publish-btn">Publish</button>
+        </form>
+
+        <a href="/mybooks" class="back-button">Back to My Books</a>
+    </div>
+</body>
+</html>

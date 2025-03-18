@@ -1,0 +1,22 @@
+<!-- views/profile.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <p><strong>Username:</strong> <%= user.username %></p>
+            <p><strong>Email:</strong> <%= user.email || 'Not provided' %></p>
+            <p><strong>Bio:</strong> <%= user.bio || 'No bio available' %></p>
+        </div>
+        <a href="/profile/update" class="edit-button">Edit Profile</a>
+        <a href="/home" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>

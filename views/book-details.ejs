@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= book.title %> - Details</title>
+    <link rel="stylesheet" href="/css/book-details.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Book Title and Author -->
+        <h1><%= book.title %></h1>
+        <h3>By <%= book.author %></h3>
+
+        <!-- Book Contents -->
+        <div class="content-box">
+            <p><%= book.contents %></p>
+        </div>
+
+        <!-- Average Rating -->
+        <p><strong>Average Rating:</strong> 
+            <%= book.avgRating && book.avgRating > 0 ? book.avgRating.toFixed(2) : "No ratings yet" %>
+        </p>
+
+        <!-- Rating System -->
+        <section class="rating-section">
+            <h4>Rate this book:</h4>
+            <form action="/rate/<%= encodeURIComponent(book.title) %>" method="POST" class="rating-form">
+                <label for="rating">Your Rating:</label>
+                <select name="rating" id="rating" required>
+                    <option value="" disabled selected>Select Rating</option>
+                    <option value="1">⭐ (1)</option>
+                    <option value="2">⭐⭐ (2)</option>
+                    <option value="3">⭐⭐⭐ (3)</option>
+                    <option value="4">⭐⭐⭐⭐ (4)</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                </select>
+                <button type="submit">Submit Rating</button>
+            </form>
+
+            <!-- Remove Rating Form -->
+            <form action="/remove-rating/<%= encodeURIComponent(book.title) %>" method="POST" class="remove-rating-form">
+                <button type="submit" class="remove-rating-button">Remove Rating</button>
+            </form>
+        </section>
+
+        <!-- Back to Home -->
+        <br>
+        <a href="/home" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>
