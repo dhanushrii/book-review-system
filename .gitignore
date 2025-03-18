@@ -1,0 +1,10 @@
+# Sensitive files
+.env
+config.js
+secrets/
+
+# Node.js dependencies
+node_modules/
+
+# Log files
+*.log
