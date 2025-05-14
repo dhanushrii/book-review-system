@@ -1,4 +1,4 @@
-**#BookVerse**
+#**BookVerse**
 A web-based application to review and rate books. This system allows users to:
 - Browse books
 - Add new book reviews
